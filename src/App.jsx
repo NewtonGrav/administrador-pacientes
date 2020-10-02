@@ -8,16 +8,13 @@ function App() {
 
 	const [citas, setCitas] = useState(citasIniciales);
 
-	// Realiza la operacion definida cada vez que el state (tambien definido) cambia
-	// Utiliza un array de dependencia
-	// * [] -> Una ejecucion
 	useEffect(() => {
-		if (citasIniciales) 
+		if (citasIniciales) {
 			localStorage.setItem('citas', JSON.stringify(citas));
-		 else 
+		} else {
 			localStorage.setItem('citas', JSON.stringify([]));
-		
-	}, [citas]);
+		}
+	}, [citas, citasIniciales]);
 
 	const guardarCita = (cita) => {
 		setCitas([...citas, cita]);
