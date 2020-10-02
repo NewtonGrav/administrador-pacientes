@@ -1,10 +1,23 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import './app.css';
 import Formulario from './components/Formulario';
 import Cita from './components/Cita';
 
 function App() {
-	const [citas, setCitas] = useState([]);
+	let citasIniciales = JSON.parse(localStorage.getItem('citas')) || [];
+
+	const [citas, setCitas] = useState(citasIniciales);
+
+	// Realiza la operacion definida cada vez que el state (tambien definido) cambia
+	// Utiliza un array de dependencia
+	// * [] -> Una ejecucion
+	useEffect(() => {
+		if (citasIniciales) 
+			localStorage.setItem('citas', JSON.stringify(citas));
+		 else 
+			localStorage.setItem('citas', JSON.stringify([]));
+		
+	}, [citas]);
 
 	const guardarCita = (cita) => {
 		setCitas([...citas, cita]);
