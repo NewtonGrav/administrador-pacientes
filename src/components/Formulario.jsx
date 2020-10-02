@@ -1,6 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 const Formulario = () => {
+	const [cita, setCita] = useState({
+		nombre: '',
+		propietario: '',
+		fecha: null,
+		hora: '',
+		sintomas: ''
+	})
+
 	return (
 		<Fragment>
 			<h2>Crear Cita</h2>
@@ -19,18 +27,18 @@ const Formulario = () => {
 					className='u-full-width'
 					placeholder='Nombre dueño'
 					type='text'
-					name='duenio'
+					name='propietario'
 				/>
 
 				<div className='row'>
 					<div className='six columns'>
 						<label>Fecha</label>
-						<input className='u-full-width' type='date' name='duenio' />
+						<input className='u-full-width' type='date' name='fecha' />
 					</div>
 
 					<div className='six columns'>
 						<label>Hora</label>
-						<input className='u-full-width' type='time' name='duenio' />
+						<input className='u-full-width' type='time' name='hora' />
 					</div>
 				</div>
 
