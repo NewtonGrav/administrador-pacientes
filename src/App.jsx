@@ -1,8 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import './app.css';
 import Formulario from './components/Formulario';
 
 function App() {
+	const [citas, setCitas] = useState([]);
+
+	const guardarCita = (cita) => {
+		setCitas([...citas, cita]);
+	};
+
 	return (
 		<Fragment>
 			<h1>Adminsitrador de pacientes</h1>
@@ -10,7 +16,7 @@ function App() {
 			<div className='container'>
 				<div className='row'>
 					<div className='six columns'>
-						<Formulario />
+						<Formulario guardarCita={guardarCita} />
 					</div>
 					<div className='six columns'>2</div>
 				</div>

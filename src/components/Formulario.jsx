@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import uuid from 'uuid/dist/v4';
 
-const Formulario = () => {
+const Formulario = ({ guardarCita }) => {
 	const [cita, setCita] = useState({
 		mascota: '',
 		propietario: '',
@@ -13,10 +13,7 @@ const Formulario = () => {
 	const [errorValidacion, setErrorValidacion] = useState(false);
 
 	const handlerState = (e) => {
-		setCita({
-			...cita,
-			[e.target.name]: e.target.value,
-		});
+		setCita({ ...cita, [e.target.name]: e.target.value });
 	};
 
 	const { mascota, propietario, fecha, hora, sintomas } = cita;
@@ -36,10 +33,9 @@ const Formulario = () => {
 		}
 		setErrorValidacion(false);
 
-		// Asignar ID
 		cita.id = uuid();
 
-		//Crear cita
+		guardarCita(cita);
 
 		//reiniciar form
 	};
