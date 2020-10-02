@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import './index.css';
+import './app.css';
 import Formulario from './components/Formulario';
 
 function App() {
