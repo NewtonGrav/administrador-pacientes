@@ -9,8 +9,9 @@ const Formulario = () => {
 		sintomas: '',
 	});
 
+	const [errorValidacion, setErrorValidacion] = useState(false);
+
 	const handlerState = (e) => {
-		console.log('Escribiendo...', e.target.name);
 		setCita({
 			...cita,
 			[e.target.name]: e.target.value,
@@ -19,11 +20,37 @@ const Formulario = () => {
 
 	const { mascota, propietario, fecha, hora, sintomas } = cita;
 
+	const submitCita = (e) => {
+		e.preventDefault();
+
+		if (
+			mascota.trim() === '' ||
+			propietario.trim() === '' ||
+			fecha.trim() === '' ||
+			hora.trim() === '' ||
+			sintomas.trim() === ''
+		) {
+			setErrorValidacion(true);
+			return;
+		}
+		setErrorValidacion(false);
+
+		// Asignar ID
+
+		//Crear cita
+
+		//reiniciar form
+	};
+
 	return (
 		<Fragment>
 			<h2>Crear Cita</h2>
 
-			<form>
+			{errorValidacion ? (
+				<p className='alerta-error'>Todos los campos son obligatorios</p>
+			) : null}
+
+			<form onSubmit={submitCita}>
 				<label>Nombre de mascota</label>
 				<input
 					className='u-full-width'
