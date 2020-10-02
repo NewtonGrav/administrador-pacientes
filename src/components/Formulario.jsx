@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import PropTypes from 'prop-types'
 import uuid from 'uuid/dist/v4';
 
 const Formulario = ({ guardarCita }) => {
@@ -115,5 +116,9 @@ const Formulario = ({ guardarCita }) => {
 		</Fragment>
 	);
 };
+
+Formulario.propTypes = {
+	guardarCita: PropTypes.func.isRequired
+}
 
 export default Formulario;
